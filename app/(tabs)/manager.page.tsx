@@ -1,28 +1,29 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { ContainerView, Typography } from '@/src/components';
+import { EmailInput, PasswordInput } from '@/src/components/inputs/input.component';
+import { updateInputeValue } from '@/src/hooks/input.hook';
+
+import { useState } from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
-export default function TabTwoScreen() {
+export default function ManagerScreen() {
+  const inset = useSafeAreaInsets();
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator}/>
-    </View>
+    <ContainerView style={{ paddingTop: inset.top }}>
+      <Typography>Manage your password here</Typography>
+      <EmailInput placeholder='email'
+        value={email} 
+        onChange={ e => updateInputeValue(e, setEmail) }
+      />
+      <PasswordInput placeholder='password'
+        onChange={(e) => updateInputeValue(e, setPassword)}
+        value={password}
+      />
+    </ ContainerView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});

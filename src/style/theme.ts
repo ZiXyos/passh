@@ -1,7 +1,15 @@
 import { type TextStyle } from "react-native";
 
 const spaceTokens = {
-	
+	xxxs: 2,
+	xxs: 4,
+	xs: 8,
+	s: 12,
+	m: 16,
+	l: 24,
+	xl: 32,
+	xxl: 40,
+	xxxl: 60,
 }
 
 const colorTokens = {
@@ -10,6 +18,23 @@ const colorTokens = {
 	frenchGray: '#a6a6a8',
 	raisinBlack: '#272635',
 	nonPhotoBlue: '#b1e5f2'
+}
+
+const darkVariation = {
+	spaceCadet: '#353347',
+}
+
+//type themeMode = 'dark' | 'light';
+
+const mode = {
+	dark: {
+		color: colorTokens.frenchGray,
+		background: colorTokens.raisinBlack
+	},
+	light: {
+		color: colorTokens.raisinBlack,
+		background: colorTokens.frenchGray
+	}
 }
 
 const fontTokens = {
@@ -24,11 +49,14 @@ const fontSizeTokens = {
 	body2: 20
 }
 
+// create 2 theme darkTheme | lightTheme and depending the colorshcheme using one ;)
+
 export const theme = {
 	color: {
 		primary: colorTokens.raisinBlack,
 		secondary: colorTokens.frenchGray,
-		background: colorTokens.nonPhotoBlue,
+		background: colorTokens.raisinBlack,
+		...darkVariation,
 	},
 	spacing: spaceTokens,
 	radius: {
