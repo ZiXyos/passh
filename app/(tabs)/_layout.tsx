@@ -1,8 +1,8 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
 import { useColorScheme } from 'react-native';
-
-import Colors from '@/constants/Colors';
+import { theme } from '@/src/style';
+import { BlurView } from 'expo-blur';
 
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
@@ -12,11 +12,13 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
-    const colorScheme = useColorScheme();
 
     return (
         <Tabs screenOptions={{
-            tabBarActiveTintColor: Colors[colorScheme ?? 'dark'].tint,
+            tabBarActiveTintColor: theme.color.secondary,
+            tabBarInactiveTintColor: theme.color.spaceCadet,
+            tabBarStyle: { backgroundColor: theme.color.background, borderTopWidth: 0},
+            tabBarBackground: () => <BlurView intensity={100} />
         }}>
         <Tabs.Screen
             name="index"

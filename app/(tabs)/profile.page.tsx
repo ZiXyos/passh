@@ -1,11 +1,12 @@
-import { Typography } from "@/components";
-import { View } from "react-native";
+import { ContainerView, Typography } from "@/components";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function ProfilePage() {
 
+  const inset = useSafeAreaInsets();
   return (
-    <View>
+    <ContainerView style={{ paddingTop: inset.top }}>
       <Typography>Profile Page </Typography>
-    </View>
+    </ContainerView>
   )
 }

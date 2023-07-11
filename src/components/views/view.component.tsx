@@ -4,6 +4,7 @@ import { ViewProps } from "react-native";
 
 const Root = styled.View`
 	backgroundColor: ${({ theme }) => theme.color.background };
+	flex: 1;
 `
 
 const ContainerView: FunctionComponent<ViewProps> = (props: ViewProps) => {
