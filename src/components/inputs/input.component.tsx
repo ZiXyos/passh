@@ -50,6 +50,21 @@ const EmailInput: FunctionComponent<InputTextBaseProps> = ({
 	/>
 )
 
+const SearchInput: FunctionComponent<InputTextBaseProps> = ({
+	onChange,
+	placeholder,
+	...props
+}) => {
+	return (
+		<Root onChange={onChange}
+			placeholder={placeholder}
+			autoComplete="off"
+			autoCapitalize="none"
+			{...props}
+		/>
+	)
+}
+
 const PasswordInput: FunctionComponent<InputTextBaseProps> = ({
 	onChange,
 	placeholder,
@@ -79,5 +94,6 @@ const PasswordInput: FunctionComponent<InputTextBaseProps> = ({
 export {
 	InputText,
 	EmailInput,
-	PasswordInput
+	PasswordInput,
+	SearchInput
 }

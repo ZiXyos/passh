@@ -1,15 +1,11 @@
 import { 
   ContainerView,
   Typography,
-  EmailInput,
-  PasswordInput,
-  Button
+  ItemList,
+  ScrollView
 } from '@/components';
-import { updateInputeValue } from '@/hooks';
-import { ItemList } from '@/src/components/lists/list.item.component';
 import { Item } from '@/types';
 import { useState } from 'react';
-import { Keyboard, ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const fakeList: Array<Item> = [{
@@ -21,26 +17,23 @@ const fakeList: Array<Item> = [{
 }];
 
 export default function ManagerScreen() {
+
   const inset = useSafeAreaInsets();
-
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
   const [items, setItem] = useState<Array<Item>>(fakeList);
-
-  const handleItem = (newItem: Item) => {
-    console.log(newItem);
-    setItem([...items, newItem]);
-    console.log(items);
-  }
   
   return (
-    <ContainerView style={{ paddingTop: inset.top }}>
+    <ContainerView style={{ paddingTop: inset.top, height: '100%' }}>
       <Typography>Manage your password here</Typography>
       <ScrollView>
         {
           items.map((v, k) => <ItemList key={k} title={v.name} data={v.email}/>)
         }
       </ScrollView>
+    </ ContainerView>
+  );
+}
+/*
+ *
       <EmailInput placeholder='email'
         value={email} 
         onChange={ e => updateInputeValue(e, setEmail) }
@@ -65,7 +58,5 @@ export default function ManagerScreen() {
       }>
         AddItem
       </Button>
-    </ ContainerView>
-  );
-}
+*/
 
