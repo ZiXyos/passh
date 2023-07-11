@@ -1,10 +1,16 @@
-import { ContainerView, Typography } from '@/src/components';
-import { EmailInput, PasswordInput } from '@/src/components/inputs/input.component';
-import { updateInputeValue } from '@/src/hooks/input.hook';
+import { 
+  ContainerView,
+  Typography,
+  EmailInput,
+  PasswordInput
+} from '@/components';
+import { updateInputeValue } from '@/hooks';
+import { Item } from '@/types';
 
 import { useState } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+const fakeList: Array<Item> = []
 
 export default function ManagerScreen() {
   const inset = useSafeAreaInsets();

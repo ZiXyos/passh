@@ -1,4 +1,4 @@
-import { Typography } from "@/src/components";
+import { Typography } from "@/components";
 import { View } from "react-native";
 
 export default function ProfilePage() {
