@@ -6,6 +6,7 @@ import {
   Button
 } from '@/components';
 import { updateInputeValue } from '@/hooks';
+import { ItemList } from '@/src/components/lists/list.item.component';
 import { Item } from '@/types';
 import { useState } from 'react';
 import { Keyboard, ScrollView } from 'react-native';
@@ -34,12 +35,12 @@ export default function ManagerScreen() {
   
   return (
     <ContainerView style={{ paddingTop: inset.top }}>
+      <Typography>Manage your password here</Typography>
       <ScrollView>
         {
-          items.map((v, k) => <Typography type='body' key={k}>{v.name}</Typography>)
+          items.map((v, k) => <ItemList key={k} title={v.name} data={v.email}/>)
         }
       </ScrollView>
-      <Typography>Manage your password here</Typography>
       <EmailInput placeholder='email'
         value={email} 
         onChange={ e => updateInputeValue(e, setEmail) }

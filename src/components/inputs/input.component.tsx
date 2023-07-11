@@ -1,9 +1,11 @@
 import styled from "@emotion/native";
 import { FunctionComponent, useState } from "react";
 import { NativeSyntheticEvent, TextInputChangeEventData, TextInputProps, useColorScheme } from "react-native";
-import Button from "../buttons/button.component";
-import { FontAwesome } from "@expo/vector-icons";
-import Colors from "@/src/constants/Colors";
+/*
+ * import { Button } from "../buttons";
+ * import { FontAwesome } from "@expo/vector-icons";
+ * import Colors from "@/src/constants/Colors";
+*/
 
 type InputTextBaseProps = {
 	onChange?: (
@@ -17,8 +19,8 @@ type InputTextBaseProps = {
 
 const Root = styled.TextInput<InputTextBaseProps>`
 	height: 40px;
-	borderWidth: 1px;
-	borderRadius: 10px;
+	borderWidth: 0.5px;
+	borderRadius: 5px;
 	backgroundColor: ${({ theme }) => theme.color.background};
 	margin: ${({ theme }) => `${theme.spacing.s}px`};
 `
