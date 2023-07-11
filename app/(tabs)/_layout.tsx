@@ -1,6 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
-import { useColorScheme } from 'react-native';
 import { theme } from '@/src/style';
 import { BlurView } from 'expo-blur';
 

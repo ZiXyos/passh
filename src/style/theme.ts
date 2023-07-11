@@ -56,6 +56,7 @@ export const theme = {
 		primary: colorTokens.raisinBlack,
 		secondary: colorTokens.frenchGray,
 		background: colorTokens.raisinBlack,
+		...colorTokens,
 		...darkVariation,
 	},
 	spacing: spaceTokens,
