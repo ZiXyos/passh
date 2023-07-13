@@ -57,6 +57,28 @@ export async function getItem<K extends string, T>({
 	}
 }
 
+type updateItemArgs<T, K extends string> = {
+	key: K;
+	newVal: Partial<T>
+}
+async function updateItem<T, K extends string>({
+	key,
+	newVal
+}: updateItemArgs<T, K>): Promise<void> {
+
+	try {
+		const res = await AsyncStorage.getItem(key);
+		if (!res) return;
+
+		const prevObj = JSON.parse(res) as T;
+		const updatedValue: T = { ...prevObj, ...newVal };
+
+		await persist({key: key, data: updatedValue});
+	} catch {
+		console.log('an error occurred');
+	}
+}
+
 type DelItemArgs<K extends string> = {
 	key: K
 }
@@ -72,5 +94,6 @@ async function deleteItem<K extends string>({
 
 export {
 	persist,
+	updateItem,
 	deleteItem
 }

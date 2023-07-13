@@ -10,6 +10,8 @@ import { Item } from "@/src/types";
 
 import { Keyboard } from "react-native";
 import { useState } from "react";
+import EntityItem from "@/src/services/storage/entities/items.entity";
+import { genKey } from "@/src/utils";
 
 const AddScreen = () => {
 
@@ -18,13 +20,20 @@ const AddScreen = () => {
      * setup accessible state for the app ?? 
      * save it and when back update from the local store
     **/
+
     console.log(item);
+    const itemEntity = new EntityItem({
+      data: item 
+    });
+
+    const itemKey = genKey('key', item.name);
+    itemEntity.save(itemKey);
   }
 
-  const [name, setName] = useState<string>('');
+  const [name, setName] = useState<string>('default');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [link, setLink] = useState<string[]>(['']);
+  const [link, setLink] = useState<[string]>(['']);
 
   return (
     <ContainerView >
@@ -44,9 +53,9 @@ const AddScreen = () => {
           handleItem({
             email: email,
             password: password,
-            name: 'default',
+            name: name,
             tags: [''],
-            links: ['https://google.com']
+            links: link
           });
           Keyboard.dismiss();
         }

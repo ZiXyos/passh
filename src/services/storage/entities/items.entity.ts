@@ -3,7 +3,7 @@ import { IEntity } from '@/interfaces';
 import { Item } from '@/src/types';
 import { persist } from '../local.store';
 
-type EntityParams<T = Item> = { data: T } & IEntity<T>;
+type EntityParams<T = Item> = { data: T };
 
 class EntityItem<T = Item> implements IEntity<T> {
 
@@ -15,8 +15,8 @@ class EntityItem<T = Item> implements IEntity<T> {
 
 	constructor(params: EntityParams<T>) {
 
-		this.createdAt = params.createdAt;
-		this.updatedAt = params.updatedAt;
+		this.createdAt = Date.now().toString();
+		this.updatedAt = Date.now().toString();
 		this.data = params.data;
 	}
 
