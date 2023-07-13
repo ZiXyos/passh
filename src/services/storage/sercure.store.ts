@@ -1,12 +1,9 @@
 import { getItemAsync, setItemAsync } from "expo-secure-store"
 import { Result } from "../../types/error.type";
 
-type StorableItem = {
-	key: string;
-	value: string;
-};
 
-const storeValue = async ({ key, value}: StorableItem) => {
+const storeValue = async <T>( key: string, value: string ) => {
+
 	await setItemAsync(key, value);
 }
 
