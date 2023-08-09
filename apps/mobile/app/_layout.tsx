@@ -48,15 +48,7 @@ function RootLayoutNav() {
       <SafeAreaProvider>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name='add.screen' options={{ 
-            headerTintColor: theme.color.ghostWhite,
-            title: 'Add Item', 
-            headerStyle: { 
-              backgroundColor: theme.color.background,
-            }
-          }}/>
           <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-
         </Stack>
       </SafeAreaProvider>
     </ThemeProvider>

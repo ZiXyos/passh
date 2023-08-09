@@ -12,22 +12,28 @@ import { Keyboard } from "react-native";
 import { useState } from "react";
 import EntityItem from "@/src/services/storage/entities/items.entity";
 import { genKey } from "@/src/utils";
+import { router, useNavigation } from "expo-router";
+import { RootTabScreenProps } from "@/src/types/navigation.type";
+import { getItem } from "@/src/services";
 
-const AddScreen = () => {
+const AddScreen = ({
+  route,
+  navigation
+}: RootTabScreenProps<'AddPass'>) => {
 
-  const handleItem = (item: Item) => {
+  const handleItem = (item: Item): EntityItem => {
     /* 
      * setup accessible state for the app ?? 
      * save it and when back update from the local store
     **/
 
-    console.log(item);
     const itemEntity = new EntityItem({
       data: item 
     });
 
     const itemKey = genKey('key', item.name);
-    itemEntity.save(itemKey);
+    itemEntity.save(itemKey); 
+    return itemEntity;
   }
 
   const [name, setName] = useState<string>('default');
@@ -49,15 +55,17 @@ const AddScreen = () => {
 
       <Button label={'push'} 
         onPress={() =>{ 
-          console.log(email, password);
-          handleItem({
+          const item = handleItem({
             email: email,
             password: password,
             name: name,
             tags: [''],
             links: link
           });
+
+          console.log(`saving item ${item.data.name}`);
           Keyboard.dismiss();
+          navigation.navigate('Manager', { items: item });
         }
       }>
         AddItem

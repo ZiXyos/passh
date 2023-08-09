@@ -29,16 +29,17 @@ export default function TabLayout() {
         />
         <Tabs.Screen name="manager.page"
             options={{
-                title: 'manager',
+                title: 'Manager',
                 headerShown: false,
                 tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
             }}
+            initialParams={{ items: [] }}
         />
             <Tabs.Screen name='profile.page'
                 options={{
-                    title: 'profile',
+                    title: 'Profile',
                     tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
-                    headerShown: false, 
+                    headerShown: false,
                 }}
             />
         </Tabs>

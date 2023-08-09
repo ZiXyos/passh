@@ -1,6 +1,7 @@
 import { CompositeScreenProps, NavigatorScreenParams } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import EntityItem from "../services/storage/entities/items.entity";
 
 type RootStackParamList = {
     Root: NavigatorScreenParams<RootTabParamList> | undefined;
@@ -15,7 +16,8 @@ type RootStackScreenProps<
 type RootTabParamList = {
     Home: undefined;
     Profile: undefined;
-    Manager: undefined
+    Manager: { items: EntityItem };
+    AddPass: undefined;
 };
 
 type RootTabScreenProps<
@@ -31,3 +33,9 @@ export {
     RootTabParamList,
     RootTabScreenProps
 };
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStackParamList {}
+  }
+}
