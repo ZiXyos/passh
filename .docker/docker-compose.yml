@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  pass-db:
+    image: postgres:${POSTGRES_VERSION}
+    restart: always
+    env_file: .db-var.env
+    ports:
+      - ${POSTGRES_PORT}:8383
+  
+  pass-adminer:
+    image: adminer:latest
+    restart: always
+    ports:
+      - ${ADMINER_PORT}:8380
