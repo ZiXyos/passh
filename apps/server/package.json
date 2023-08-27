@@ -8,7 +8,10 @@
     "start": "node server.js",
     "test": "node ace test",
     "lint": "eslint . --ext=.ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prisma:migrate" : "npx prisma migrate dev --name init",
+    "prisma:seeder:generate": "node ace prisma-seeder:make",
+    "prisma:seeder:run": "node ace prisma-seeder:run"
   },
   "eslintConfig": {
     "extends": [
