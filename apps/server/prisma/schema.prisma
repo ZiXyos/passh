@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("POSTGRE_URL")
+  url      = env("POSTGRES_URL")
 }
 
 model LocalCredentials {
@@ -33,7 +33,6 @@ model GoogleCredentials {
 
 model User {
   id Int @id @default(autoincrement())
-  email String
   username String?
   passwords_lists PasswordItem[]
   role Role @default(USER)
