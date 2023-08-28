@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "../../tsconfig.root.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "declaration": true,
+    "outDir": "./dist",
+    "target": "ES5",
+    "paths": {
+      "@shared": ["./*"]
+    }
+  },
+  "include": ["**/*"],
+  "exclude": ["../../node_modules", "dist/"]
+}

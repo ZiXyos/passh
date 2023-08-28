@@ -1,8 +1,8 @@
 import { prisma, PrismaSeederBase } from '@ioc:Adonis/Addons/Prisma';
 import { faker } from '@faker-js/faker';
 import { Prisma } from '@prisma/client';
-import { getSecureRandomString } from '../../common/helpers/random.helper';
 
+import { getSecureRandomString } from '@passh/shared'
 
 export default class UserSeeder extends PrismaSeederBase {
   public static developmentOnly = false

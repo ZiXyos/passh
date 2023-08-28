@@ -19,3 +19,4 @@ tmp
 # Sys Files
 .DS_Store
 node_modules
+packages/shared/dist
