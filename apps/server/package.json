@@ -9,6 +9,7 @@
     "test": "node ace test",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
+    "prisma:generate": "npx prisma generate",
     "prisma:migrate" : "npx prisma migrate dev --name init",
     "prisma:seeder:generate": "node ace prisma-seeder:make",
     "prisma:seeder:run": "node ace prisma-seeder:run"
