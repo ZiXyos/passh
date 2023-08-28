@@ -1,0 +1,21 @@
+{
+  "name": "@passh/core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "turbo test",
+    "docker:compose": "docker compose -f ./.docker/docker-compose.yaml",
+    "docker:dev:up": "pnpm docker:compose --env-file .env.dev up -d",
+    "docker:dev:down": "pnpm docker:compose --env-file .env.dev down",
+    "dev": "turbo dev",
+    "build:api": "turbo build --filter=@passh/server",
+    "build:mobile": "turbo build --filter=@passh/mobile",
+    "build:web": "echo nothing to do"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@8.7.0"
+}
