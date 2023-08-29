@@ -4,7 +4,8 @@
     "./commands",
     "@adonisjs/core/build/commands/index.js",
     "@adonisjs/repl/build/commands",
-    "@wahyubucil/adonis-prisma/build/commands"
+    "@wahyubucil/adonis-prisma/build/commands",
+    "adonis5-swagger/build/commands"
   ],
   "exceptionHandlerNamespace": "App/Exceptions/Handler",
   "aliases": {
@@ -19,9 +20,12 @@
   ],
   "providers": [
     "./providers/AppProvider",
+    "./app/Services/Auth/local-credentials.service",
     "@adonisjs/core",
     "@wahyubucil/adonis-prisma",
-    "@adonisjs/auth"
+    "@adonisjs/auth",
+    "adonis5-swagger",
+    "@adonisjs/session"
   ],
   "aceProviders": [
     "@adonisjs/repl"

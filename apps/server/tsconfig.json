@@ -30,7 +30,9 @@
       "@adonisjs/repl",
       "@japa/preset-adonis/build/adonis-typings",
       "@wahyubucil/adonis-prisma",
-      "@adonisjs/auth"
+      "@adonisjs/auth",
+      "adonis5-swagger",
+      "@adonisjs/session"
     ]
   }
 }

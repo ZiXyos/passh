@@ -24,4 +24,10 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.get('/user', 'UsersController.index');
+
+Route.group(() => {
+  Route.group(() => {
+    Route.post('signup', 'AuthController.signup')
+  })
+}).namespace('App/Controllers/v1')
+  .prefix('v1')
