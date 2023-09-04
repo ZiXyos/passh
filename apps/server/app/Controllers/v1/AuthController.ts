@@ -2,6 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { prisma } from '@ioc:Adonis/Addons/Prisma';
 import { type LocalCredentials } from '@prisma/client';
 import { authenticatedUserResSchema, signupReqSchema } from '@passh/shared';
+import  Hash from '@ioc:Adonis/Core/Hash';
 
 export default class AuthController {
 
@@ -17,7 +18,7 @@ export default class AuthController {
     try {
       localCredential = await prisma.localCredentials.create({ data: {
         email: email, 
-        password: password,
+        password: await Hash.make(password),
         account: { create: {} }
       }});
     } catch(err) {

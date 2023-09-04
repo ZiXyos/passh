@@ -20,8 +20,8 @@
   ],
   "providers": [
     "./providers/AppProvider",
-    "./app/Services/Auth/local-credentials.service",
     "@adonisjs/core",
+    "./app/Services/Auth/local-credentials.service",
     "@wahyubucil/adonis-prisma",
     "@adonisjs/auth",
     "adonis5-swagger",
