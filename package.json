@@ -6,11 +6,11 @@
   "private": true,
   "scripts": {
     "test": "turbo test",
-    "docker:compose": "docker compose -f ./.docker/docker-compose.yaml",
+    "docker:compose": "docker compose -f ./.docker/docker-compose.yml",
     "docker:dev:up": "pnpm docker:compose --env-file .env.dev up -d",
     "docker:dev:down": "pnpm docker:compose --env-file .env.dev down",
     "dev": "turbo dev",
-    "build:api": "turbo build --filter=@passh/server",
+    "build:api": "turbo build --filter=@passh/api",
     "build:mobile": "turbo build --filter=@passh/mobile",
     "build:web": "echo nothing to do"
   },
