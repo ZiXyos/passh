@@ -20,3 +20,4 @@ tmp
 .DS_Store
 node_modules
 packages/shared/dist
+docker/certs
