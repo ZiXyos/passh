@@ -1,13 +1,13 @@
 {
   "commands": {
-    "create:dev": {
+    "dev:create": {
       "settings": {
-        "loadApp": false,
+        "loadApp": true,
         "stayAlive": false
       },
       "commandPath": "./commands/CreateDev",
-      "commandName": "create:dev",
-      "description": "",
+      "commandName": "dev:create",
+      "description": "Create a new Developper User",
       "args": [],
       "aliases": [],
       "flags": []
