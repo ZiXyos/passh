@@ -1,5 +1,17 @@
 {
   "commands": {
+    "admin:create": {
+      "settings": {
+        "loadApp": true,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/CreateAdmin",
+      "commandName": "admin:create",
+      "description": "Admin Creation",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
     "dev:create": {
       "settings": {
         "loadApp": true,
