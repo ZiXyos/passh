@@ -28,7 +28,7 @@ importers:
     dependencies:
       '@adonisjs/auth':
         specifier: ^8.2.3
-        version: 8.2.3(@adonisjs/application@5.3.0)(@adonisjs/core@5.9.0)(@adonisjs/lucid@18.4.0)
+        version: 8.2.3(@adonisjs/application@5.3.0)(@adonisjs/core@5.9.0)(@adonisjs/lucid@18.4.0)(@adonisjs/session@6.4.0)
       '@adonisjs/core':
         specifier: ^5.8.0
         version: 5.9.0
@@ -38,9 +38,15 @@ importers:
       '@adonisjs/repl':
         specifier: ^3.1.0
         version: 3.1.11(@adonisjs/core@5.9.0)
+      '@adonisjs/session':
+        specifier: ^6.4.0
+        version: 6.4.0(@adonisjs/core@5.9.0)
       '@passh/shared':
         specifier: workspace:^
         version: link:../../packages/shared
+      i:
+        specifier: ^0.3.7
+        version: 0.3.7
       luxon:
         specifier: ^3.4.3
         version: 3.4.3
@@ -336,7 +342,7 @@ packages:
       - supports-color
     dev: true
 
-  /@adonisjs/auth@8.2.3(@adonisjs/application@5.3.0)(@adonisjs/core@5.9.0)(@adonisjs/lucid@18.4.0):
+  /@adonisjs/auth@8.2.3(@adonisjs/application@5.3.0)(@adonisjs/core@5.9.0)(@adonisjs/lucid@18.4.0)(@adonisjs/session@6.4.0):
     resolution: {integrity: sha512-js9e8AHEsNC/8MGvho6MgL+uXr8SlhTg9MJJDWQBBiqsKkT7+H7NMP/pLbuSzYaaf40t2u/OXfq6wXuIC5ZYvw==}
     peerDependencies:
       '@adonisjs/core': ^5.7.1
@@ -356,6 +362,7 @@ packages:
     dependencies:
       '@adonisjs/core': 5.9.0
       '@adonisjs/lucid': 18.4.0(@adonisjs/application@5.3.0)(@adonisjs/core@5.9.0)(pg@8.11.3)
+      '@adonisjs/session': 6.4.0(@adonisjs/core@5.9.0)
       '@poppinss/hooks': 5.0.3(@adonisjs/application@5.3.0)
       '@poppinss/utils': 5.0.0
       luxon: 3.4.3
@@ -571,6 +578,16 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@adonisjs/session@6.4.0(@adonisjs/core@5.9.0):
+    resolution: {integrity: sha512-9yHS60lFpNBUX5/yB+0j+bXQDWqbaYJ1JelLCYtaKRa7B0NewvmPAmsNpHH8SrXE3XGaRyKOxrUGRcmSGg5mRA==}
+    peerDependencies:
+      '@adonisjs/core': ^5.8.0
+    dependencies:
+      '@adonisjs/core': 5.9.0
+      '@poppinss/utils': 4.0.4
+      fs-extra: 10.1.0
+    dev: false
 
   /@adonisjs/sink@5.4.3(@adonisjs/application@5.3.0):
     resolution: {integrity: sha512-wmAft/tjHQLtjbDjntaVu3/cmeP+3tXKDaMeWjVf6Dz+tXaM9XNg2EVVSV41F3JDF4W1u9ich9mC+4wvWJDy5g==}
@@ -9480,6 +9497,11 @@ packages:
     resolution: {integrity: sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==}
     dev: false
 
+  /i@0.3.7:
+    resolution: {integrity: sha512-FYz4wlXgkQwIPqhzC5TdNMLSE5+GS1IIDJZY/1ZiEPCT2S3COUVZeT5OW4BmW4r5LHLQuOosSwsvnroG9GR59Q==}
+    engines: {node: '>=0.4'}
+    dev: false
+
   /iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
@@ -11886,7 +11908,7 @@ packages:
     resolution: {integrity: sha512-Orbvg18qXHCrSj1KbaeSDVYRy/gkro2PC7Fy2tDSH1c9RB4aH8tuMOIXnKJE+1SXxBtjWmQ5Yirwkth2DyyEZA==}
     engines: {node: '>=16'}
     dependencies:
-      terser: 5.19.2
+      terser: 5.19.3
     dev: false
 
   /metro-minify-uglify@0.76.7:
