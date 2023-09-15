@@ -21,11 +21,27 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
+  // - AUTH ROUTES
   Route.group(() => {
     Route.post('signup', 'AuthController.signup')
     Route.post('login', 'AuthController.login')
     Route.post('logout', 'AuthController.logout')
-  })
-    .namespace('App/Controllers/V1')
-    .prefix('auth')
-}).prefix('v1')
+  }).prefix('auth')
+
+  // - ADMIN ROUTES
+  Route.group(() => {
+    // USERS ROUTES
+    Route.group(() => {
+      Route.get('get-info', 'AdminController.getAllUsers')
+      //Route.get('get-user', 'getUser')
+      // Route.delete('delete', 'deleteUser')
+    }).prefix('users')
+
+    // COMPAGNIES ROUTES
+    /*Route.group(() => {
+      Route.post('create', 'createCompagnies')
+    }).prefix('compagnies')*/
+  }).prefix('admin')
+})
+  .prefix('api/v1')
+  .namespace('App/Controllers/V1')

@@ -1,6 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { authenticatedUserResSchema, signinReqSchema, signupReqSchema } from '@passh/shared'
-import DatabaseErrorException from 'App/Exceptions/DatabaseErrorException'
+
 import LocalCredential from 'App/Models/LocalCredential'
 
 export default class AuthController {
@@ -22,11 +22,17 @@ export default class AuthController {
 
   public async login({ request, auth, response }: HttpContextContract) {
     const { email, password } = await signinReqSchema.parseAsync(request.body())
-    let localCredential = (await auth.attempt(email, password)) as Promise<LocalCredential>
 
-    return response.json({
-      data: authenticatedUserResSchema.parse(localCredential),
-    })
+    let localCredential: Promise<LocalCredential>
+
+    try {
+      localCredential = (await auth.use('web').attempt(email, password)) as Promise<LocalCredential>
+      return response.json({
+        data: authenticatedUserResSchema.parse(localCredential),
+      })
+    } catch {
+      return response.badRequest('Invalid Credentials')
+    }
   }
 
   public async logout({ auth, response }: HttpContextContract) {
