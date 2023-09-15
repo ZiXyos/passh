@@ -4,18 +4,39 @@
   "description": "",
   "main": "index.js",
   "private": true,
-  "scripts": {
-    "test": "turbo test",
-    "docker:compose": "docker compose -f ./.docker/docker-compose.yml",
-    "docker:dev:up": "pnpm docker:compose --env-file .env.dev up -d",
-    "docker:dev:down": "pnpm docker:compose --env-file .env.dev down",
-    "dev": "turbo dev",
-    "build:api": "turbo build --filter=@passh/api",
-    "build:mobile": "turbo build --filter=@passh/mobile",
-    "build:web": "echo nothing to do"
+   "workspaces": {
+    "packages": [
+      "apps/*",
+      "libs/*"
+    ]
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "test": "turbo test",
+    "docker:compose": "pnpm run clean; docker compose -f ./.docker/dev/docker-compose.yml",
+    "docker:dev:up": "pnpm docker:compose --env-file .env.dev up -d",
+    "docker:dev:down": "pnpm docker:compose --env-file .env.dev down",
+    "c:u:rebuild": "pnpm docker:dev:up --force-recreate --build",
+    "dev": "turbo dev",
+    "build:api": "turbo build --filter=@passh/api",
+    "build:mobile": "turbo build --filter=@passh/mobile",
+    "build:dashboard": "turbo build --filter=@passh/dashboard",
+    "build:web": "echo nothing to do",
+    "lint:write": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\""
+  },
+   "devDependencies": {
+    "dotenv-cli": "~7.2.1",
+    "husky": "~8.0.3",
+    "lint-staged": "~13.2.3",
+    "prettier": "~3.0.0",
+    "turbo": "1.10.12"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,md,css,html}": [
+      "prettier --write"
+    ]
+  },
   "packageManager": "pnpm@8.7.0"
 }

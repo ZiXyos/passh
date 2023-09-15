@@ -21,3 +21,4 @@ tmp
 node_modules
 packages/shared/dist
 docker/certs
+.pnpm-store/v3/files

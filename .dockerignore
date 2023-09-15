@@ -1,0 +1,9 @@
+node_modules
+apps/api/node_modules
+apps/web/node_modules
+apps/dashboard/node_modules
+packages/shared/node_modules
+.turbo
+.pnpm/cache
+.git
+.pnpm-store

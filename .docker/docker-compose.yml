@@ -4,24 +4,46 @@ services:
   pass-db:
     image: postgres:${POSTGRES_VERSION}
     restart: always
-    env_file: ../.env.dev
+    env_file: ../../.env.dev
     environment:
       POSTGRES_USER: ${POSTGRES_USERNAME}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DATABASE}
     ports:
       - ${POSTGRES_PORT}:5432
-    ## volumes:
-      #    - postgres_data:/var/lib/postgresql/data
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   
   pass-adminer:
     image: adminer:latest
     env_file:
-      - ../.env.dev 
+      - ../../.env.dev 
     restart: always
     ports:
       - 8080:8080
 
+  apps:
+    container_name: dev-app
+    env_file:
+      - ../../.env 
+    build: 
+      context: ../../
+      dockerfile: ./.docker/dev/Dockerfile
+    volumes:
+      - /usr/src/app/.turbo
+      - /usr/src/app/node_modules
+      - /usr/src/app/apps/web/node_modules
+      - /usr/src/app/apps/web/.turbo
+      - /usr/src/app/apps/api/node_modules
+      - /usr/src/app/apps/api/.turbo
+      - /usr/src/app/packages/shared/node_modules
+      - /usr/src/app/packages/shared/.turbo
+      - ../../:/usr/src/app
+    command: /bin/bash -c 'pnpm i --force && pnpm dev'
+    depends_on: 
+      - pass-db
+    links:
+      - pass-db:pass-db
 
 volumes:
   postgres_data:
