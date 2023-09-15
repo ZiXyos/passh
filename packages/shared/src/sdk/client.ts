@@ -5,12 +5,13 @@ export class Client {
 	private readonly httpClient: HttpClient;
 
 	constructor(
-		options: Partial<ClientOptions> = { userAgent: 'agent'}
-	) {
+		options: Partial<ClientOptions> = {}
+	) {		
+
 		this.httpClient = new HttpClient(
-			options.accessToken,
-			options.baseEp,
-			options.userAgent
+			options.accessToken ?? null,
+			options.baseEp ?? '',
+			options.userAgent ?? 'agent'
 		)
 	}
 }

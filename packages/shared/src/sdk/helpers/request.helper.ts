@@ -1,13 +1,6 @@
 import axios from "axios";
 
-import { RequestOptions } from "../types/request.option";
-import { Methods } from "../types/method.type";
-
-type RequestParameters = {
-  method: Methods;
-  url: URL;
-  options: Partial<RequestOptions>;
-};
+import { type RequestParameters } from "../types/request.option";
 
 export const request = async <T>({
   method,
@@ -31,20 +24,5 @@ export const request = async <T>({
     validateStatus,
   });
 
-  return response;
+  return response.data;
 };
-
-export const GET = <T>({ url, options, method = "GET" }: RequestParameters) =>
-  request<T>({ method, url, options });
-
-export const POST = <T>({ url, options, method = "POST" }: RequestParameters) =>
-  request<T>({ method, url, options });
-
-export const PUT = <T>({ url, options, method = "PUT" }: RequestParameters) =>
-  request<T>({ method, url, options });
-
-export const PATCH = <T>({ url, options, method = "PATCH" }: RequestParameters) =>
-  request<T>({ method, url, options })
-
-export const DELETE = <T>({ url, options, method = "DELETE" }: RequestParameters) =>
-  request<T>({ method, url, options })
