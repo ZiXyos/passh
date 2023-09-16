@@ -41,7 +41,11 @@ Route.group(() => {
     /*Route.group(() => {
       Route.post('create', 'createCompagnies')
     }).prefix('compagnies')*/
-  }).prefix('admin')
+  })
+    .prefix('admin')
+    .middleware('admin')
+    .middleware('auth')
 })
   .prefix('api/v1')
   .namespace('App/Controllers/V1')
+  .middleware('silentAuth')

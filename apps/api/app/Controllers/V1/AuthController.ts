@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { authenticatedUserResSchema, signinReqSchema, signupReqSchema } from '@passh/shared'
+import DatabaseErrorException from 'App/Exceptions/DatabaseErrorException'
 
 import LocalCredential from 'App/Models/LocalCredential'
 
@@ -11,10 +12,10 @@ export default class AuthController {
     try {
       localCredential = await LocalCredential.create({ email, password })
     } catch (err) {
-      return response.status(404).send('User Not found')
+      throw new DatabaseErrorException(err)
     }
 
-    await auth.login(localCredential)
+    await auth.use('web').login(localCredential)
     return response.json({
       data: authenticatedUserResSchema.parse(localCredential),
     })
@@ -27,16 +28,17 @@ export default class AuthController {
 
     try {
       localCredential = (await auth.use('web').attempt(email, password)) as Promise<LocalCredential>
+      console.log(localCredential)
       return response.json({
         data: authenticatedUserResSchema.parse(localCredential),
       })
     } catch {
-      return response.badRequest('Invalid Credentials')
+      return response.status(404).send('Ivalid Credential')
     }
   }
 
   public async logout({ auth, response }: HttpContextContract) {
     await auth.logout()
-    return response.noContent()
+    return response.redirect('/login')
   }
 }

@@ -1,9 +1,9 @@
 import { AuthenticationException } from '@adonisjs/auth/build/standalone'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { userRoleSchema } from '@passh/shared/index'
+import { userRoleSchema } from '@passh/shared'
 
 export default class Admin {
-  protected redirect = 'https://api.pass-ass.local/v1/admin'
+  protected redirect = 'http://localhost:8000/auth/admin'
 
   public async handle({ auth }: HttpContextContract, next: () => Promise<void>) {
     // code for middleware goes here. ABOVE THE NEXT CALL
