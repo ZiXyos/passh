@@ -7,6 +7,11 @@ import compress from 'astro-compress'
 // https://astro.build/config
 export default defineConfig({
 	compressHTML: true,
-	integrations: [mdx(), tailwind(), compress(), svelte()],
+	integrations: [
+		mdx(),
+		tailwind(),
+		compress(),
+		svelte({ preprocess: []})
+	],
 	server: ({ command }) => ({ port: command === 'dev' ? 8000: 3434, host: true })
 });
