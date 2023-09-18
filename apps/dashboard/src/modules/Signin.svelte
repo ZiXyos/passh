@@ -13,8 +13,8 @@
 	})
 
 	async function signIn() {
-		console.log('clicked')
 		const cred = await signinReqSchema.parseAsync({email, password})	
+		console.log('clicked')
 		try {
 			const user = await client.auth.loginWithPassword(cred)
 			console.log('logged', user)
