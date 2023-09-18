@@ -1,5 +1,6 @@
-import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { authenticatedUserResSchema, signinReqSchema, signupReqSchema } from '@passh/shared'
+import * as dto from '@passh/shared'
 import DatabaseErrorException from 'App/Exceptions/DatabaseErrorException'
 
 import LocalCredential from 'App/Models/LocalCredential'
@@ -11,30 +12,30 @@ export default class AuthController {
 
     try {
       localCredential = await LocalCredential.create({ email, password })
-    } catch (err) {
-      throw new DatabaseErrorException(err)
-    }
+      await auth.use('jwt').login(localCredential)
 
-    await auth.use('web').login(localCredential)
-    return response.json({
-      data: authenticatedUserResSchema.parse(localCredential),
-    })
-  }
-
-  public async login({ request, auth, response }: HttpContextContract) {
-    const { email, password } = await signinReqSchema.parseAsync(request.body())
-
-    let localCredential: Promise<LocalCredential>
-
-    try {
-      localCredential = (await auth.use('web').attempt(email, password)) as Promise<LocalCredential>
-      console.log(localCredential)
       return response.json({
         data: authenticatedUserResSchema.parse(localCredential),
       })
-    } catch {
-      return response.status(404).send('Ivalid Credential')
+    } catch (err) {
+      throw new DatabaseErrorException(err)
     }
+  }
+
+  public async login({ auth, request, response }: HttpContextContract) {
+    const { email, password } = await signinReqSchema.parseAsync(request.body())
+    const localCredential = (await auth.attempt(email, password)) as Promise<LocalCredential>
+    const token = await auth.use('jwt').generate(await localCredential)
+    const responseJwt: dto.AuthenticatedResDto = {
+      name: token.name,
+      accessToken: token.accessToken,
+      refreshToken: token.refreshToken,
+      credential: token.user,
+    }
+
+    response.json({
+      data: responseJwt,
+    })
   }
 
   public async logout({ auth, response }: HttpContextContract) {

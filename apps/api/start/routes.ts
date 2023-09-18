@@ -44,7 +44,6 @@ Route.group(() => {
   })
     .prefix('admin')
     .middleware('admin')
-    .middleware('auth')
 })
   .prefix('api/v1')
   .namespace('App/Controllers/V1')

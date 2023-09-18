@@ -6,6 +6,7 @@
  */
 
 import LocalCredential from 'App/Models/LocalCredential'
+import { JWTGuardConfig, JWTGuardContract } from "@ioc:Adonis/Addons/Jwt";
 
 declare module '@ioc:Adonis/Addons/Auth' {
   /*
@@ -97,5 +98,9 @@ declare module '@ioc:Adonis/Addons/Auth' {
       config: BasicAuthGuardConfig<'user'>
       client: BasicAuthClientContract<'user'>
     }
+    jwt: {
+      implementation: JWTGuardContract<'user', 'api'>,
+      config: JWTGuardConfig<'user'>,
+    };
   }
 }

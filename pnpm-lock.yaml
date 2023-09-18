@@ -29,6 +29,9 @@ importers:
       '@adonisjs/auth':
         specifier: ^8.2.3
         version: 8.2.3(@adonisjs/application@5.3.0)(@adonisjs/core@5.9.0)(@adonisjs/lucid@18.4.0)(@adonisjs/session@6.4.0)
+      '@adonisjs/bouncer':
+        specifier: ^2.3.0
+        version: 2.3.0(@adonisjs/auth@8.2.3)(@adonisjs/core@5.9.0)
       '@adonisjs/core':
         specifier: ^5.8.0
         version: 5.9.0
@@ -44,6 +47,9 @@ importers:
       '@passh/shared':
         specifier: workspace:^
         version: link:../../packages/shared
+      adonis5-jwt:
+        specifier: ^1.1.7
+        version: 1.1.7
       i:
         specifier: ^0.3.7
         version: 0.3.7
@@ -403,6 +409,23 @@ packages:
       fs-extra: 10.1.0
       media-typer: 1.1.0
       slash: 3.0.0
+
+  /@adonisjs/bouncer@2.3.0(@adonisjs/auth@8.2.3)(@adonisjs/core@5.9.0):
+    resolution: {integrity: sha512-wJTIgIkDXtUyeCJGX/iV/EdrLQAuIU0YSwl8Lxn7hcYec9VbsMJ5aYIXeSNtOqECNqVm7KFdzyJiOEij9Luoqg==}
+    peerDependencies:
+      '@adonisjs/auth': ^8.0.0
+      '@adonisjs/core': ^5.1.0
+      '@adonisjs/view': ^6.0.0
+    peerDependenciesMeta:
+      '@adonisjs/auth':
+        optional: true
+      '@adonisjs/view':
+        optional: true
+    dependencies:
+      '@adonisjs/auth': 8.2.3(@adonisjs/application@5.3.0)(@adonisjs/core@5.9.0)(@adonisjs/lucid@18.4.0)(@adonisjs/session@6.4.0)
+      '@adonisjs/core': 5.9.0
+      '@poppinss/utils': 4.0.4
+    dev: false
 
   /@adonisjs/config@3.0.9:
     resolution: {integrity: sha512-f+wzrc+0HLvhJyYGEMV2QTHtyJ8sI3PKvH9h/baW/iF8UO3KF+llHH0Cf3/M5dYnpdz9rnmj0VtdTaIDfxrgGg==}
@@ -4500,6 +4523,15 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
+  /@ts-morph/common@0.11.1:
+    resolution: {integrity: sha512-7hWZS0NRpEsNV8vWJzg7FEz6V8MaLNeJOmwmghqUXTpzk16V1LLZhdo+4QvE/+zv4cVci0OviuJFnqhEfoV3+g==}
+    dependencies:
+      fast-glob: 3.3.1
+      minimatch: 3.1.2
+      mkdirp: 1.0.4
+      path-browserify: 1.0.1
+    dev: false
+
   /@types/acorn@4.0.6:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
     dependencies:
@@ -5184,6 +5216,14 @@ packages:
   /adonis-preset-ts@2.1.0:
     resolution: {integrity: sha512-cQH/NP250gOF9k3TTDhVsTOPSAvyH4MhKVZ4ryYiihA+vnP27sut1gVIrRas3Evl5d2wEgWVGI5DgdP/ZFSk0w==}
     dev: true
+
+  /adonis5-jwt@1.1.7:
+    resolution: {integrity: sha512-WQcNeifnh0rkaUQQrBHXU4MhLV6Z+mQk5xOfE/waGJyfSk9RFllvFJfsqb6d+zB5/9SrYrZL0T0FCFyZOnQ3Dg==}
+    dependencies:
+      jose: 3.20.4
+      ts-morph: 12.2.0
+      uuid: 8.3.2
+    dev: false
 
   /agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -6587,6 +6627,10 @@ packages:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
     dev: true
+
+  /code-block-writer@10.1.1:
+    resolution: {integrity: sha512-67ueh2IRGst/51p0n6FvPrnRjAGHY5F8xdjkgrYE7DDzpJe6qA07RYQ9VcoUeo5ATOjSOiWpSL3SWBRRbempMw==}
+    dev: false
 
   /code-red@1.0.4:
     resolution: {integrity: sha512-7qJWqItLA8/VPVlKJlFXU+NBlo/qyfs39aJcuMT/2ere32ZqvF5OSxgdM5xOfJJ7O429gg2HM47y8v9P+9wrNw==}
@@ -10819,6 +10863,10 @@ packages:
 
   /join-component@1.1.0:
     resolution: {integrity: sha512-bF7vcQxbODoGK1imE2P9GS9aw4zD0Sd+Hni68IMZLj7zRnquH7dXUmMw9hDI5S/Jzt7q+IyTXN0rSg2GI0IKhQ==}
+    dev: false
+
+  /jose@3.20.4:
+    resolution: {integrity: sha512-PRnyOQwWGD3EZnnSpKOOLqQ0RT9chbB8f8AzY4bEHY0I2FCtrcp1ojG0nBgAMn2MtuPpE3wOwIhhW0G7AGzbLw==}
     dev: false
 
   /joycon@3.1.1:
@@ -16407,6 +16455,13 @@ packages:
 
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
+
+  /ts-morph@12.2.0:
+    resolution: {integrity: sha512-WHXLtFDcIRwoqaiu0elAoZ/AmI+SwwDafnPKjgJmdwJ2gRVO0jMKBt88rV2liT/c6MTsXyuWbGFiHe9MRddWJw==}
+    dependencies:
+      '@ts-morph/common': 0.11.1
+      code-block-writer: 10.1.1
+    dev: false
 
   /tsconfig-paths@3.14.2:
     resolution: {integrity: sha512-o/9iXgCYc5L/JxCHPe3Hvh8Q/2xm5Z+p18PESBU6Ff33695QnCHBEjcytY2q19ua7Mbl/DavtBOLq+oG0RCL+g==}

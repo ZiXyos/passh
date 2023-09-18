@@ -56,11 +56,13 @@
   },
   "dependencies": {
     "@adonisjs/auth": "^8.2.3",
+    "@adonisjs/bouncer": "^2.3.0",
     "@adonisjs/core": "^5.8.0",
     "@adonisjs/lucid": "^18.4.0",
     "@adonisjs/repl": "^3.1.0",
     "@adonisjs/session": "^6.4.0",
     "@passh/shared": "workspace:^",
+    "adonis5-jwt": "^1.1.7",
     "i": "^0.3.7",
     "luxon": "^3.4.3",
     "pg": "^8.11.3",

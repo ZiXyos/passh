@@ -7,7 +7,7 @@ export default class LocalCredential extends BaseModel {
   public static table = 'local_credentials'
 
   @column({ isPrimary: true })
-  public id: number
+  public id: string
 
   @column()
   public email: string
