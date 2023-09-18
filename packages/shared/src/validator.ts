@@ -20,13 +20,16 @@ const signinReqSchema = z.object({
 	})
 });
 
-const authenticatedUserResSchema = z.object({
+const userJwtBodySchema = z.object({
 	id: z.string(),
-	email: z.string().email(),
-	password: z.string().min(8),
-	localCredential: z.any().nullable(),
-	createdAt: z.coerce.date(),
-	updatedAt: z.coerce.date()
+	email: z.string().email()
+})
+
+const authenticatedUserResSchema = z.object({
+	name: z.string(),
+	accessToken: z.string().min(16),
+	refreshToken: z.string(),
+	credential: userJwtBodySchema 
 });
 
 export {

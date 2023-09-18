@@ -1,18 +1,18 @@
-import { type Methods } from "../types/method.type"
+import { type Methods } from "../types/method.type";
 
 export type ErrorResDto = {
-	status: 'failure'
-  statusCode: number
-  error: string
-  message: string | string[]
-  timestamp: string
-  path: string
-  method: Methods
-}
+	status: "failure";
+	statusCode: number;
+	error: string;
+	message: string | string[];
+	timestamp: string;
+	path: string;
+	method: Methods;
+};
 
 export type SuccessResDto<T> = {
-	status: 'sucess'
-	data: T
-}
+	data: T;
+	status: "sucess";
+};
 
-export type BaseResDto<T> = SuccessResDto<T> | ErrorResDto
+export type BaseResDto<T> = SuccessResDto<T> | ErrorResDto;

@@ -15,7 +15,6 @@ export const request = async <T>({
   const validateStatus =
     options.validateStatus ?? ((status) => status >= 200 && status < 300);
 
-  console.log(url);
   const response = await axios.request<T>({
     method,
     url: url.href,
