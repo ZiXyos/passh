@@ -25,7 +25,9 @@ export default class AuthController {
   public async login({ auth, request, response }: HttpContextContract) {
     const { email, password } = await signinReqSchema.parseAsync(request.body())
     const localCredential = (await auth.attempt(email, password)) as Promise<LocalCredential>
-    const token = await auth.use('jwt').generate(await localCredential)
+
+    const token = await auth.use('jwt').login(await localCredential.user)
+
     const responseJwt: dto.AuthenticatedResDto = {
       name: token.name,
       accessToken: token.accessToken,
@@ -39,7 +41,7 @@ export default class AuthController {
   }
 
   public async logout({ auth, response }: HttpContextContract) {
-    await auth.logout()
+    await auth.use('jwt').revoke()
     return response.redirect('/login')
   }
 }

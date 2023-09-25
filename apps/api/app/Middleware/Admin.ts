@@ -5,9 +5,14 @@ import { userRoleSchema } from '@passh/shared'
 export default class Admin {
   protected redirectTo = 'http://localhost:8000/auth/admin'
 
-  public async handle({ auth }: HttpContextContract, next: () => Promise<void>) {
+  public async handle({ request, auth }: HttpContextContract, next: () => Promise<void>) {
     // code for middleware goes here. ABOVE THE NEXT CALL
-    const user = auth.user?.user
+    const authorization = request.header('Authorization')
+    console.log(authorization, auth.use('jwt').payload)
+
+    console.log(auth.use('jwt').isLoggedIn)
+    /*const user = localCred.user
+
     if (!user) {
       throw new AuthenticationException(
         'Unauthorized access',
@@ -26,6 +31,6 @@ export default class Admin {
         'web',
         this.redirectTo
       )
-    }
+    }*/
   }
 }

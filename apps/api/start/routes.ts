@@ -44,7 +44,7 @@ Route.group(() => {
   })
     .prefix('admin')
     .middleware('admin')
+    .middleware('silentAuth')
 })
   .prefix('api/v1')
   .namespace('App/Controllers/V1')
-  .middleware('silentAuth')

@@ -18,7 +18,7 @@ import Env from "@ioc:Adonis/Core/Env";
 |
 */
 const authConfig: AuthConfig = {
-  guard: 'web',
+  guard: 'jwt',
   guards: {
     /*
     |--------------------------------------------------------------------------
@@ -229,7 +229,7 @@ const authConfig: AuthConfig = {
       },
     },
     jwt: {
-      driver: "jwt",
+      driver: 'jwt',
       publicKey: Env.get('JWT_PUBLIC_KEY', '').replace(/\\n/g, '\n'),
       privateKey: Env.get('JWT_PRIVATE_KEY', '').replace(/\\n/g, '\n'),
       persistJwt: false,
@@ -239,14 +239,14 @@ const authConfig: AuthConfig = {
         type: 'api',
         driver: 'database',
         table: 'jwt_tokens',
-        foreignKey: 'user_id'
+        foreignKey: 'user_id',
       },
       provider: {
-        driver: "lucid",
-        identifierKey: "id",
-        uids: [],
-        model: () => import('App/Models/Local Credential')
-      }
+        driver: 'lucid',
+        identifierKey: 'id',
+        uids: ['email'],
+        model: () => import('App/Models/LocalCredential'),
+      },
     },
   },
 }

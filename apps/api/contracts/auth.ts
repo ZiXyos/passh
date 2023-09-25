@@ -99,8 +99,8 @@ declare module '@ioc:Adonis/Addons/Auth' {
       client: BasicAuthClientContract<'user'>
     }
     jwt: {
-      implementation: JWTGuardContract<'user', 'api'>,
-      config: JWTGuardConfig<'user'>,
-    };
+      implementation: JWTGuardContract<'user', 'api'>
+      config: JWTGuardConfig<'user'>
+    }
   }
 }
