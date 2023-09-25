@@ -24,7 +24,7 @@ export default class AuthController {
 
   public async login({ auth, request, response }: HttpContextContract) {
     const { email, password } = await signinReqSchema.parseAsync(request.body())
-    const localCredential = (await auth.attempt(email, password)) as Promise<LocalCredential>
+    const localCredential = (await auth.attempt(email, password)) as Promise<typeof LocalCredential>
 
     const token = await auth.use('jwt').login(await localCredential.user)
 
