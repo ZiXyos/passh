@@ -33,7 +33,7 @@ Route.group(() => {
     // USERS ROUTES
     Route.group(() => {
       Route.get('get-info', 'AdminController.getAllUsers')
-      //Route.get('get-user', 'getUser')
+      Route.get('get-user/:id', 'AdminController.getUser')
       // Route.delete('delete', 'deleteUser')
     }).prefix('users')
 
@@ -44,6 +44,13 @@ Route.group(() => {
   })
     .prefix('admin')
     .middleware('admin')
+    .middleware('silentAuth')
+
+  Route.group(() => {
+    Route.get('password', () => {
+      return { data: 'here is ur pass lists'}
+    })
+  }).prefix('me')
     .middleware('silentAuth')
 })
   .prefix('api/v1')

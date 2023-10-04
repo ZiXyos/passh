@@ -10,5 +10,11 @@ export default class AdminsController {
     return response.json(dataJson)
   }
 
-  public async getUser({}: HttpContextContract) {}
+  public async getUser({ request, response }: HttpContextContract) {
+    const params = request.params()
+    const user = await User.findBy('id', params['id'])
+    const dataJson = user?.serialize()
+
+    return response.json(dataJson)
+  }
 }
